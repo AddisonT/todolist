@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ToDo List</title>
+</head>
+<body>
+<!-- 	<ul style="list-style: none;">
+		<% @tasks.each do |task|  %>
+			<li> <%= task.description %></li></br>
+		<% end %>
+	</ul> -->
+	
+<%= form_for :taco, url: '/create' do |f| %>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </p>
+	<p>
+		<!-- maps name to a.name and option value to a.id -->
+		<%= f.select :author_id, @authors.map { |a| [ a.name, a.id ] } %>
+	</p>
+  <p>
+    <%= f.submit "Save task" %>
+  </p>
+<% end %>
+</body>
+</html>

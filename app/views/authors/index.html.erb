@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Authors</title>
+</head>
+<body>
+<%= form_for :author, url: '/author/create' do |f| %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+    <p>
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </p>
+  <p>
+    <%= f.submit "Create Author" %>
+  </p>
+<% end %>
+
+<ul style="list-style: none;">
+    <% @authors.each do |author|  %>
+      <li> <%= author.name %></li></br>
+          <ul style="list-style: none;">
+            <% author.todos.each do |task|  %>
+            <li> <%= task.description%></li></br>
+            <% end  %>
+          </ul>
+    <% end %>
+  </ul>
+</body>
+</html>
